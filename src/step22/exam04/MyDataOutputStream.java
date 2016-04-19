@@ -1,0 +1,19 @@
+package step22.exam04;
+ 
+import java.io.OutputStream;
+import java.io.IOException;
+
+public class MyDataOutputStream {
+
+  static void writerShort(OutputStream out, short value) throws IOException {
+    out.write(value >> 8);
+    out.write(value);
+  }
+
+  static void writerInt(OutputStream out, int value) throws IOException {
+    out.write(value >> 24);
+    out.write(value >> 16);
+    out.write(value >> 8);
+    out.write(value);
+  }
+}
