@@ -4,8 +4,6 @@
 // => 복잡한 단순 객체는 "Factory Method" 패턴을 사용하라!
 package designpattern.builder.exam02;
 
-import java.util.HashMap;
-
 public class Test01 {
 
   public static void main(String[] args) {
