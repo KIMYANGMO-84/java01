@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+    <context:annotation-config/>     
+
+    <bean id="car1" class="step33.exam09.Car3">      
+      <property name="model" value="티코"/>
+      <property name="maker" value="비트자동차"/>
+      <!-- @Autowired 애노테이션을 사용하면
+           설정 파일에서 다음과 같이 의존 객체 주입을 
+           요구하는 태그를 작성할 필요가 없다.
+           => @Autowired 붙이는 곳
+            1) 셋터 메서드 선언 앞에
+            2) 필드 선언 앞에
+           => @Autowired를 처리하려면 그 일을 수행하는 객체를 스프링 객체를 등록해야 한다.
+           -->       
+    </bean>
+    <!-- 주입할 의존 객체가 2개라면 어떤 값이 선택 되겠는가?
+      => 값을 선택할 수 없으므로 Exception발생
+      => 해결책
+        => @Qualifier를 사용하여 주입할 객체를 지정해야 한다. 
+     -->   
+    
+    <bean id="engine1" class="step33.exam09.Engine">
+      <property name="cc" value="800"/>
+      <property name="valve" value="16"/>
+      <property name="type" value="가솔린"/>      
+    </bean>
+    <bean id="engine2" class="step33.exam09.Engine">
+      <property name="cc" value="3000"/>
+      <property name="valve" value="32"/>
+      <property name="type" value="디젤"/>      
+    </bean>
+    <!-- 다음과 같이 특정 애노테이션을 처리할 객체를 등록하려면,
+      => 그 클래스가 무엇인지 기억해야 한다.
+      => 또한 다음과 같이 긴 문장을 설정 파일에 추가해야 한다.
+      위 두가지가 너무 번거롭기 때문에
+      => 그래서 스프링은 단축 태그를 추가하였다. 
+          -->
+    <!-- 
+    <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+    -->
+</beans>
